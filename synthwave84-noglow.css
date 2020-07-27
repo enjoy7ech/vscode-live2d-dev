@@ -1,0 +1,159 @@
+.monaco-editor .margin,
+.monaco-editor-background,
+.monaco-editor .inputarea.ime-input {
+  background: transparent;
+}
+
+/* Add the subtle gradient to the editor background */
+/* body background */
+.monaco-editor {
+  background-color: transparent !important;
+  background-size: auto 100vh;
+  background-position: top;
+  background-repeat: no-repeat;
+}
+
+/* Sweet sunset dots */
+.monaco-workbench .activitybar>.content .monaco-action-bar .badge .badge-content {
+  /* background: linear-gradient(to bottom, #fff951 25%, #fc28a8); */
+}
+
+/* Active tab neon */
+.monaco-workbench .part.editor>.content .editor-group-container>.title .tabs-container>.tab.sizing-fit.active {
+  /* box-shadow: inset 0 -5px 25px #fc28a825; */
+  background: #5ecbf7bb;
+  position: relative;
+}
+
+/* Active tab stripe */
+@keyframes lighting {
+  0% {
+    background-position: 0%;
+  }
+
+  50% {
+    background-position: 100%;
+  }
+
+  100% {
+    background-position: 0%;
+  }
+}
+
+.monaco-workbench .part.editor>.content .editor-group-container>.title .tabs-container>.tab.sizing-fit.active::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg,
+      #03a9f4,
+      #f441a5,
+      #ffeb3b,
+      #03a9f4,
+      #ffeb3b,
+      #f441a5,
+      #03a9f4);
+  animation: lighting 6s linear infinite alternate;
+  filter: blur(1px);
+  background-size: 400%;
+  background-position: 0%;
+  opacity: 1;
+  z-index: 6;
+}
+
+.monaco-workbench .part.editor>.content .editor-group-container>.title .tabs-container>.tab.sizing-fit::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 0px;
+  transition: opacity 1s;
+  opacity: 0;
+  z-index: 6;
+}
+
+/* Active sidebar item */
+.monaco-workbench .activitybar>.content .monaco-action-bar .action-item.checked {
+  /* box-shadow: inset 0 -5px 25px #fc28a825; */
+  background: linear-gradient(90deg, #5ecbf7, transparent);
+  position: relative;
+}
+
+.monaco-workbench .activitybar>.content .monaco-action-bar .action-item.checked::after {
+  /* content: "";
+  position: absolute;
+  bottom: 0px;
+  top: 0px;
+  left: 0px;
+  width: 1px;
+  background: linear-gradient(to bottom, #fc28a8, #03edf9) !important;
+  opacity: 1; */
+}
+
+.monaco-workbench .activitybar>.content .monaco-action-bar .action-item::after {
+  content: "";
+  position: absolute;
+  bottom: 0px;
+  top: 0px;
+  left: 0px;
+  width: 0px;
+  transition: opacity 1s;
+  opacity: 0;
+}
+
+/* selected list row */
+.monaco-list .monaco-list-row.selected {
+  background: linear-gradient(90deg, #5eccf78e, transparent) !important;
+}
+
+/* status bar */
+.monaco-workbench .part.statusbar {
+  background: transparent !important;
+}
+
+.monaco-workbench .part.statusbar:after {
+  content: "";
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  right: 0;
+  top: 0px;
+  background: linear-gradient(90deg,
+      #03a8f4a8, transparent);
+  animation: lighting 8s linear infinite alternate;
+  /* filter: blur(1px); */
+  background-size: 400%;
+  background-position: 0%;
+  opacity: 1;
+  z-index: -1;
+}
+
+/* mini-map */
+.monaco-editor .minimap-slider .minimap-slider-horizontal {
+  background: linear-gradient(90deg, #5eccf78e, transparent) !important;
+}
+
+/* current-line */
+.monaco-editor .view-overlays .current-line {
+  background: linear-gradient(90deg, #5eccf71f, transparent) !important;
+}
+
+.monaco-editor .view-overlays .current-line:after {
+  content: "";
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg,
+      #03a8f4a8, transparent);
+  animation: lighting 2s linear infinite alternate;
+  /* filter: blur(1px); */
+  background-size: 400%;
+  background-position: 0%;
+  opacity: 1;
+  z-index: -1;
+}
