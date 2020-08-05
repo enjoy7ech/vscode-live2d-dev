@@ -14,12 +14,23 @@
 }
 
 /* Sweet sunset dots */
-.monaco-workbench .activitybar>.content .monaco-action-bar .badge .badge-content {
+.monaco-workbench
+  .activitybar
+  > .content
+  .monaco-action-bar
+  .badge
+  .badge-content {
   /* background: linear-gradient(to bottom, #fff951 25%, #fc28a8); */
 }
 
 /* Active tab neon */
-.monaco-workbench .part.editor>.content .editor-group-container>.title .tabs-container>.tab.sizing-fit.active {
+.monaco-workbench
+  .part.editor
+  > .content
+  .editor-group-container
+  > .title
+  .tabs-container
+  > .tab.sizing-fit.active {
   /* box-shadow: inset 0 -5px 25px #fc28a825; */
   background: #5ecbf7bb;
   position: relative;
@@ -40,30 +51,44 @@
   }
 }
 
-.monaco-workbench .part.editor>.content .editor-group-container>.title .tabs-container>.tab.sizing-fit.active::after {
+.monaco-workbench
+  .part.editor
+  > .content
+  .editor-group-container
+  > .title
+  .tabs-container
+  > .tab.sizing-fit.active::after {
   content: "";
   position: absolute;
   bottom: -1px;
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(90deg,
-      #03a9f4,
-      #f441a5,
-      #ffeb3b,
-      #03a9f4,
-      #ffeb3b,
-      #f441a5,
-      #03a9f4);
+  background: linear-gradient(
+    90deg,
+    #03a9f4,
+    #f441a5,
+    #ffeb3b,
+    #03a9f4,
+    #ffeb3b,
+    #f441a5,
+    #03a9f4
+  );
   animation: lighting 6s linear infinite alternate;
-  filter: blur(1px);
+  /* filter: blur(1px); */
   background-size: 400%;
   background-position: 0%;
   opacity: 1;
   z-index: 6;
 }
 
-.monaco-workbench .part.editor>.content .editor-group-container>.title .tabs-container>.tab.sizing-fit::after {
+.monaco-workbench
+  .part.editor
+  > .content
+  .editor-group-container
+  > .title
+  .tabs-container
+  > .tab.sizing-fit::after {
   content: "";
   position: absolute;
   bottom: -1px;
@@ -76,13 +101,21 @@
 }
 
 /* Active sidebar item */
-.monaco-workbench .activitybar>.content .monaco-action-bar .action-item.checked {
+.monaco-workbench
+  .activitybar
+  > .content
+  .monaco-action-bar
+  .action-item.checked {
   /* box-shadow: inset 0 -5px 25px #fc28a825; */
   background: linear-gradient(90deg, #5ecbf7, transparent);
   position: relative;
 }
 
-.monaco-workbench .activitybar>.content .monaco-action-bar .action-item.checked::after {
+.monaco-workbench
+  .activitybar
+  > .content
+  .monaco-action-bar
+  .action-item.checked::after {
   /* content: "";
   position: absolute;
   bottom: 0px;
@@ -93,7 +126,11 @@
   opacity: 1; */
 }
 
-.monaco-workbench .activitybar>.content .monaco-action-bar .action-item::after {
+.monaco-workbench
+  .activitybar
+  > .content
+  .monaco-action-bar
+  .action-item::after {
   content: "";
   position: absolute;
   bottom: 0px;
@@ -112,6 +149,7 @@
 /* status bar */
 .monaco-workbench .part.statusbar {
   background: transparent !important;
+  color: #ffffff !important;
 }
 
 .monaco-workbench .part.statusbar:after {
@@ -121,8 +159,7 @@
   left: 0;
   right: 0;
   top: 0px;
-  background: linear-gradient(90deg,
-      #03a8f4a8, transparent);
+  background: linear-gradient(90deg, #03a8f4a8, transparent);
   animation: lighting 8s linear infinite alternate;
   /* filter: blur(1px); */
   background-size: 400%;
@@ -148,8 +185,7 @@
   left: 0;
   right: 0;
   height: 1px;
-  background: linear-gradient(90deg,
-      #03a8f4a8, transparent);
+  background: linear-gradient(90deg, #03a8f4a8, transparent);
   animation: lighting 2s linear infinite alternate;
   /* filter: blur(1px); */
   background-size: 400%;
