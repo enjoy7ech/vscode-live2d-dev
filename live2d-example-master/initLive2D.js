@@ -26,26 +26,27 @@ var selectAry = [
   ["z16"]
 ];
 
-function initL2Dwidget(selectId="haru01") {
-  let modalName = selectAry.find((item) => { return item[0].toLowerCase() == selectId });
-  console.log('modalName', modalName)
-  modalName = modalName && modalName[1] ? modalName[1] : selectId
-
-console.log(11111,"/Users/dongzhenxiang/ShareFloder/vscode-custom/live2d-example-master/packages/live2d-widget-model-" + modalName + "/assets/" + selectId + ".model.json");
-
+function initL2Dwidget(path) {
   L2Dwidget
       .on('*', (name) => {
           console.log('%c EVENT ' + '%c -> ' + name, 'background: #222; color: yellow', 'background: #fff; color: #000')
       })
       .init({
+          dialog: {
+            enable: true,
+            script: {
+                'tap body': 'Coding!!!',
+                'tap face': '你在认真写代码吗？',
+            }
+          },
           display: {
               position: 'right',
               hOffset: 0,
               vOffset: 22
           },
-          "model": { "scale": 0.8,"jsonPath": "/Users/dongzhenxiang/ShareFloder/vscode-custom/live2d-example-master/packages/live2d-widget-model-" + modalName + "/assets/" + selectId + ".model.json" },
+          "model": { "scale": 0.8,"jsonPath": "/Users/dongzhenxiang/ShareFloder/vscode-custom/live2d-example-master/packages/"+path },
           "mobile": { "show": true, scale: 0.5 },
       });
 }
 
-initL2Dwidget()
+initL2Dwidget('小埋/13.json')
