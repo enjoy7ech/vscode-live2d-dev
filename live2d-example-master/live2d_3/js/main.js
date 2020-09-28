@@ -111,6 +111,19 @@ class L2D {
   }
 }
 
+const sleep = (milliseconds) => {
+  return new Promise((resolve) => setTimeout(resolve, milliseconds));
+};
+
+const getBox = async (className) => {
+  let dom = $("." + className);
+  while (!dom.length) {
+    await sleep(500);
+    dom = $("." + className);
+  }
+  return dom;
+};
+
 class Viewer {
   constructor(basePath, name) {
     this.l2d = new L2D(basePath);
@@ -118,17 +131,17 @@ class Viewer {
     const box = document.createElement("div");
     box.style.position = "fixed";
     box.style.bottom = "22px";
-    box.style.right = "-147px";
+    box.style.right = "22px";
     box.style.zIndex = "2";
-    $("body").append(box);
+
     this.canvas = $(box);
 
     name = name || "aidang_2";
     this.l2d.load(name, this);
 
-    this.app = new PIXI.Application(1280, 720, { transparent: true });
-    let width = 600;
-    let height = (width / 16.0) * 9.0;
+    this.app = new PIXI.Application(320, 320, { transparent: true });
+    let width = 320;
+    let height = (width / 1) * 1;
     this.width = width;
     this.height = height;
     this.app.view.style.width = width + "px";
@@ -187,7 +200,7 @@ class Viewer {
     });
   }
 
-  changeCanvas(model) {
+  async changeCanvas(model) {
     this.app.stage.removeChildren();
 
     this.model = model;
@@ -200,8 +213,11 @@ class Viewer {
     this.app.renderer.resize(this.width, this.height);
 
     this.model.position = new PIXI.Point(this.width * 0.5, this.height * 0.5);
-    this.model.scale = new PIXI.Point(this.model.position.x * 0.06, this.model.position.x * 0.06);
+    this.model.scale = new PIXI.Point(this.model.position.x * 0.12, this.model.position.x * 0.12);
     this.model.masks.resize(this.app.view.width, this.app.view.height);
+
+    const target = await getBox("chromium");
+    target.append(this.canvas);
   }
 
   onUpdate(delta) {
