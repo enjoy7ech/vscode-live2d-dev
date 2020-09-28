@@ -42,11 +42,10 @@ function initL2Dwidget(path) {
           display: {
               position: 'right',
               hOffset: 50,
-              vOffset: 3
+              vOffset: 22
           },
-          "model": { "scale": 1,"jsonPath": "/Users/dongzhenxiang/ShareFloder/vscode-custom/live2d-example-master/packages/"+path },
-          "mobile": { "show": true, scale: 0.5 },
+          "model": { "scale": 1.7,"jsonPath": "/Users/dongzhenxiang/ShareFloder/vscode-custom/live2d-example-master/packages/"+path },
       });
 }
 
-initL2Dwidget('雷姆/11.json')
+initL2Dwidget('snow_miku/model.json')

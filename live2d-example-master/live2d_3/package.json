@@ -1,0 +1,18 @@
+{
+  "name": "live2d_3",
+  "version": "1.0.0",
+  "description": "",
+  "dependencies": {
+    "jquery": "^3.5.1",
+    "pixi.js": "^5.3.3",
+    "webpack": "^4.44.2"
+  },
+  "devDependencies": {
+    "imports-loader": "^1.1.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
