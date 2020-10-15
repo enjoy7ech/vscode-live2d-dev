@@ -26,7 +26,21 @@ var selectAry = [
   ["z16"]
 ];
 
-function initL2Dwidget(path) {
+const sleep = (milliseconds) => {
+  return new Promise((resolve) => setTimeout(resolve, milliseconds));
+};
+
+const getBox = async (className) => {
+  let dom = document.querySelector("." + className);
+  console.log(dom);
+  while (!dom) {
+    await sleep(500);
+    dom = document.querySelector("." + className);
+  }
+  return dom;
+};
+
+const initL2Dwidget = async (path)=> {
   L2Dwidget
       .on('*', (name) => {
           console.log('%c EVENT ' + '%c -> ' + name, 'background: #222; color: yellow', 'background: #fff; color: #000')
@@ -42,10 +56,19 @@ function initL2Dwidget(path) {
           display: {
               position: 'right',
               hOffset: 50,
-              vOffset: 22
+              vOffset: 2
           },
-          "model": { "scale": 1.7,"jsonPath": "/Users/dongzhenxiang/ShareFloder/vscode-custom/live2d-example-master/packages/"+path },
+          "model": { "scale": 1,"jsonPath": "/Users/dongzhenxiang/ShareFloder/vscode-custom/live2d-example-master/packages/"+path },
       });
+
+  const target = await getBox("chromium");
+  let canvas = document.querySelector('body #live2d-widget')
+  canvas.style.zIndex = 2
+
+  target.append(canvas);
 }
 
-initL2Dwidget('snow_miku/model.json')
+initL2Dwidget('雷姆/11.json')
+
+
+

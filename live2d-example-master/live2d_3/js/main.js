@@ -128,19 +128,22 @@ class Viewer {
   constructor(basePath, name) {
     this.l2d = new L2D(basePath);
     this.model = null;
+    this.interval = null;
     const box = document.createElement("div");
     box.style.position = "fixed";
-    box.style.bottom = "22px";
-    box.style.right = "22px";
+    box.style.bottom = "-102px";
+    box.style.right = "0px";
     box.style.zIndex = "2";
+    box.style.pointerEvents = "none";
+    box.style.zoom = 0.6
 
     this.canvas = $(box);
 
-    name = name || "aidang_2";
+    name = name || "xuefeng";
     this.l2d.load(name, this);
 
-    this.app = new PIXI.Application(320, 320, { transparent: true });
-    let width = 320;
+    this.app = new PIXI.Application(1280, 1280, { transparent: true });
+    let width = 720;
     let height = (width / 1) * 1;
     this.width = width;
     this.height = height;
@@ -213,11 +216,30 @@ class Viewer {
     this.app.renderer.resize(this.width, this.height);
 
     this.model.position = new PIXI.Point(this.width * 0.5, this.height * 0.5);
-    this.model.scale = new PIXI.Point(this.model.position.x * 0.12, this.model.position.x * 0.12);
+    this.model.scale = new PIXI.Point(this.model.position.x * 0.06, this.model.position.x * 0.06);
     this.model.masks.resize(this.app.view.width, this.app.view.height);
 
     const target = await getBox("chromium");
     target.append(this.canvas);
+
+    //定时播放动画
+    clearInterval(this.interval);
+    let n = 0;
+    let motionsKey = []
+    model.motions.forEach((v,k)=>{
+      if(k!=='effect' && k!=='login'){
+        motionsKey.push(k)
+      }
+    })
+    this.startAnimation('login', "base");
+    this.interval = setInterval(() => {
+      this.startAnimation(motionsKey[n], "base");
+      if (n > motionsKey.length - 1) {
+        n = 0;
+      } else {
+        n++;
+      }
+    }, 30 * 1000);
   }
 
   onUpdate(delta) {
@@ -335,4 +357,4 @@ class Viewer {
   }
 }
 
-var v = new Viewer("file:///Users/dongzhenxiang/ShareFloder/vscode-custom/live2d-example-master/live2d_3/model/Azue Lane(JP)", "dujiaoshou_4");
+var v = new Viewer("file:///Users/dongzhenxiang/ShareFloder/vscode-custom/live2d-example-master/live2d_3/model/Azue Lane(JP)", "yichui_2");
