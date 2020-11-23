@@ -33,7 +33,8 @@ const sleep = (milliseconds) => {
 const getBox = async (className) => {
   let dom = document.querySelector("." + className);
   console.log(dom);
-  while (!dom) {
+  let n = 5
+  while (!dom && n--) {
     await sleep(500);
     dom = document.querySelector("." + className);
   }
@@ -65,7 +66,9 @@ const initL2Dwidget = async (path)=> {
   let canvas = document.querySelector('body #live2d-widget')
   canvas.style.zIndex = 2
 
-  target.append(canvas);
+  if(target){
+    target.append(canvas);
+  }
 }
 
 initL2Dwidget('雷姆/11.json')
