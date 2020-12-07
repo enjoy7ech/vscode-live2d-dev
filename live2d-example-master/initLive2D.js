@@ -32,42 +32,59 @@ const sleep = (milliseconds) => {
 
 const getBox = async (className) => {
   let dom = document.querySelector("." + className);
-  console.log(dom);
-  let n = 5
+  let n = 10
   while (!dom && n--) {
-    await sleep(500);
     dom = document.querySelector("." + className);
+    await sleep(500);
   }
-  return dom;
+  console.log('--getBox---------\n',dom);
+  return dom || document.querySelector('body');
+};
+
+const getDom = async (selector) => {
+  let dom = document.querySelector(selector);
+  let n = 10
+  while (!dom && n--) {
+    dom = document.querySelector(selector);
+    await sleep(500);
+  }
+  console.log('--getBox---------\n',dom);
+  return dom || null
 };
 
 const initL2Dwidget = async (path)=> {
-  L2Dwidget
-      .on('*', (name) => {
-          console.log('%c EVENT ' + '%c -> ' + name, 'background: #222; color: yellow', 'background: #fff; color: #000')
-      })
-      .init({
-          dialog: {
-            enable: true,
-            script: {
-                'tap body': 'Coding!!!',
-                'tap face': '你在认真写代码吗？',
-            }
-          },
-          display: {
-              position: 'right',
-              hOffset: 50,
-              vOffset: 2
-          },
-          "model": { "scale": 1,"jsonPath": "/Users/dongzhenxiang/ShareFloder/vscode-custom/live2d-example-master/packages/"+path },
-      });
-
-  const target = await getBox("chromium");
-  let canvas = document.querySelector('body #live2d-widget')
-  canvas.style.zIndex = 2
-
-  if(target){
-    target.append(canvas);
+  await L2Dwidget
+  .on('*', (name) => {
+    console.log('%c EVENT ' + '%c -> ' + name, 'background: #222; color: yellow', 'background: #fff; color: #000')
+  })
+  .init({
+    dialog: {
+      enable: true,
+      script: {
+        'tap body': 'Coding!!!',
+        'tap face': '你在认真写代码吗？',
+      }
+    },
+    display: {
+      position: 'right',
+      hOffset: 50,
+      vOffset: 2
+    },
+    "model": { "scale": 1,"jsonPath": "/Users/dongzhenxiang/ShareFloder/vscode-custom/live2d-example-master/packages/"+path },
+  })
+  
+  try {
+    const target = await getBox("chromium");
+  
+    let canvas = await getDom("body #live2d-widget");
+    canvas.style.zIndex = 2
+    
+    console.log('--append Canvas---------\n');
+    if(target){
+      target.append(canvas);
+    }
+  } catch (error) {
+    console.error(error)
   }
 }
 
