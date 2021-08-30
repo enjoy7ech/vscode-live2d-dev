@@ -37,7 +37,6 @@ const getBox = async (className) => {
     dom = document.querySelector("." + className);
     await sleep(500);
   }
-  console.log('--getBox---------\n',dom);
   return dom || document.querySelector('body');
 };
 
@@ -48,15 +47,11 @@ const getDom = async (selector) => {
     dom = document.querySelector(selector);
     await sleep(500);
   }
-  console.log('--getBox---------\n',dom);
   return dom || null
 };
 
 const initL2Dwidget = async (path)=> {
   await L2Dwidget
-  .on('*', (name) => {
-    console.log('%c EVENT ' + '%c -> ' + name, 'background: #222; color: yellow', 'background: #fff; color: #000')
-  })
   .init({
     dialog: {
       enable: true,
@@ -79,7 +74,6 @@ const initL2Dwidget = async (path)=> {
     let canvas = await getDom("body #live2d-widget");
     canvas.style.zIndex = 2
     
-    console.log('--append Canvas---------\n');
     if(target){
       target.append(canvas);
     }
