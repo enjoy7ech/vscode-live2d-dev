@@ -70,7 +70,7 @@ const initL2Dwidget = async (path)=> {
       hOffset: 50,
       vOffset: 2
     },
-    "model": { "scale": 1,"jsonPath": "/Users/dongzhenxiang/ShareFloder/vscode-custom/live2d-example-master/packages/"+path },
+    "model": { "scale": 1,"jsonPath": "https://raw.githubusercontent.com/enjoy7ech/vscode-custom/master/live2d-example-master/packages/"+path },
   })
   
   try {
@@ -87,8 +87,7 @@ const initL2Dwidget = async (path)=> {
     console.error(error)
   }
 }
-
-initL2Dwidget('雷姆/11.json')
+window.onload = ()=>initL2Dwidget('雷姆/11.json')
 
 
 
