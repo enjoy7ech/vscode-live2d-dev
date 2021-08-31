@@ -28,9 +28,6 @@ const getDom = async (selector) => {
 
 const initL2Dwidget = async (path)=> {
   await L2Dwidget
-  .on('*', (name) => {
-    console.log('%c EVENT ' + '%c -> ' + name, 'background: #222; color: yellow', 'background: #fff; color: #000')
-  })
   .init({
     dialog: {
       enable: true,
