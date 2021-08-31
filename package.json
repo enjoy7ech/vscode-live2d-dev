@@ -2,7 +2,7 @@
   "name": "vscode-custom",
   "version": "1.0.0",
   "description": "Custom Vs-code  My style",
-  "main": "enable-electron-vibrancy.js",
+  "main": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
