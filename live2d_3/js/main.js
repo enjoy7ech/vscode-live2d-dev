@@ -357,4 +357,4 @@ class Viewer {
   }
 }
 
-var v = new Viewer("file:///Users/dongzhenxiang/ShareFloder/vscode-custom/live2d-example-master/live2d_3/model/Azue Lane(JP)", "yichui_2");
+var v = new Viewer("/live2d_3/model/Azue Lane(JP)", "yichui_2");
