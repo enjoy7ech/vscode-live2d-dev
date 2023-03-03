@@ -6,6 +6,4 @@
 
 1. find workbench.html in electron-browser/workbench/
 2. comment out or delete Content-Security-Policy meta info
-3. check https://enjoy7ech.github.io
-
-
+3. add script
